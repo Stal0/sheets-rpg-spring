@@ -30,11 +30,11 @@ public abstract class Block implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Block block = (Block) o;
-        return Objects.equals(id, block.id) && Objects.equals(name, block.name);
+        return Objects.equals(id, block.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id);
     }
 }

@@ -45,8 +45,8 @@ public class Sheet implements Serializable {
         return blocks;
     }
 
-    public void setBlocks(List<Block> blocks) {
-        this.blocks = blocks;
+    public void addBlock(Block block) {
+        blocks.add(block);
     }
 
     @Override

@@ -28,9 +28,14 @@ public class Instantiation implements CommandLineRunner {
         Sheet sheet1 = new Sheet(null, "Bob, o Anão");
         Sheet sheet2 = new Sheet(null, "Carla, a Clériga");
 
+        CharacterInfoBlock infoBlock = new CharacterInfoBlock(null, "Bob Augusto", 'M', 1.72);
+        CharacterInfoBlock infoBlock1 = new CharacterInfoBlock(null, "Carla Maria", 'F', 1.52);
+
+        sheet1.addBlock(infoBlock);
+        sheet2.addBlock(infoBlock1);
+
         sheetRepository.saveAll(Arrays.asList(sheet1, sheet2));
 
-        CharacterInfoBlock infoBlock = new CharacterInfoBlock(null, "Bob Augusto", "M", )
-
+        infoBlockRepository.saveAll(Arrays.asList(infoBlock, infoBlock1));
     }
 }
