@@ -1,12 +1,15 @@
 package com.stalixo.charsheetspring.domain;
 
+import org.springframework.data.annotation.Id;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
 public abstract class Block implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+
+    @Id
     private String id;
     private Sheet sheet;
 

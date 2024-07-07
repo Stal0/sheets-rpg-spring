@@ -7,13 +7,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class CharacterInfoBlock extends Block {
 
     private String nameCharacter;
-    private Character gender;
+    private String race;
     private Double heigth;
 
-    public CharacterInfoBlock(String id, String nameCharacter, Character gender, Double heigth) {
+    public CharacterInfoBlock(String id, String nameCharacter, String race, Double heigth) {
         super(id);
         this.nameCharacter = nameCharacter;
-        this.gender = gender;
+        this.race = race;
         this.heigth = heigth;
     }
 
@@ -25,12 +25,12 @@ public class CharacterInfoBlock extends Block {
         this.nameCharacter = nameCharacter;
     }
 
-    public Character getGender() {
-        return gender;
+    public String getRace() {
+        return race;
     }
 
-    public void setGender(Character gender) {
-        this.gender = gender;
+    public void setGender(String gender) {
+        this.race = race;
     }
 
     public Double getHeigth() {

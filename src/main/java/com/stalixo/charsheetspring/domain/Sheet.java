@@ -2,6 +2,7 @@ package com.stalixo.charsheetspring.domain;
 
 import com.stalixo.charsheetspring.domain.subBlocks.CharacterInfoBlock;
 import com.stalixo.charsheetspring.dto.UserDTO;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.util.Objects;
 public class Sheet implements Serializable {
     private static final long serialVersionUID = 1l;
 
+    @Id
     private String id;
     private String name;
 
