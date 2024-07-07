@@ -1,6 +1,7 @@
 package com.stalixo.charsheetspring.domain;
 
 import com.stalixo.charsheetspring.domain.subBlocks.CharacterInfoBlock;
+import com.stalixo.charsheetspring.dto.UserDTO;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -15,14 +16,17 @@ public class Sheet implements Serializable {
     private String id;
     private String name;
 
+    private UserDTO userDTO;
+
     private List<Block> blocks = new ArrayList<>();
 
     public Sheet() {
     }
 
-    public Sheet(String id, String name) {
+    public Sheet(String id, String name, UserDTO userDTO) {
         this.id = id;
         this.name = name;
+        this.userDTO = userDTO;
     }
 
     public String getId() {
