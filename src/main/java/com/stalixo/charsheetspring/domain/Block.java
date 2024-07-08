@@ -10,8 +10,8 @@ public abstract class Block implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    private String id;
-    private Sheet sheet;
+    protected String id;
+    protected Sheet sheet;
 
     public Block() {
     }

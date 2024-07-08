@@ -1,5 +1,6 @@
 package com.stalixo.charsheetspring.domain;
 
+import com.stalixo.charsheetspring.domain.enums.SheetsModels;
 import com.stalixo.charsheetspring.domain.subBlocks.CharacterInfoBlock;
 import com.stalixo.charsheetspring.dto.UserDTO;
 import org.springframework.data.annotation.Id;
@@ -15,20 +16,22 @@ public class Sheet implements Serializable {
     private static final long serialVersionUID = 1l;
 
     @Id
-    private String id;
-    private String name;
+    protected String id;
+    protected String name;
+    protected SheetsModels sheetsModels;
 
-    private UserDTO userDTO;
+    protected UserDTO userDTO;
 
     private List<Block> blocks = new ArrayList<>();
 
     public Sheet() {
     }
 
-    public Sheet(String id, String name, UserDTO userDTO) {
+    public Sheet(String id, String name, UserDTO userDTO, SheetsModels model) {
         this.id = id;
         this.name = name;
         this.userDTO = userDTO;
+        this.sheetsModels = model;
     }
 
     public String getId() {
@@ -53,6 +56,22 @@ public class Sheet implements Serializable {
 
     public void addBlock(Block block) {
         blocks.add(block);
+    }
+
+    public SheetsModels getSheetsModels() {
+        return sheetsModels;
+    }
+
+    public void setSheetsModels(SheetsModels sheetsModels) {
+        this.sheetsModels = sheetsModels;
+    }
+
+    public UserDTO getUserDTO() {
+        return userDTO;
+    }
+
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
     }
 
     @Override

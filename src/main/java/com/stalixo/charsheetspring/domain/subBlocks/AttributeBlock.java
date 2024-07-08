@@ -1,6 +1,8 @@
 package com.stalixo.charsheetspring.domain.subBlocks;
 
 import com.stalixo.charsheetspring.domain.Block;
+import com.stalixo.charsheetspring.domain.Sheet;
+import com.stalixo.charsheetspring.domain.enums.SheetsModels;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.HashMap;
@@ -11,7 +13,17 @@ public class AttributeBlock extends Block {
 
     private Map<String, Double> attributes = new HashMap<String, Double>();
 
-    public AttributeBlock() {}
+    public AttributeBlock(String id, Sheet sheet) {
+        super(id);
+        if (sheet.getSheetsModels() == SheetsModels.DND) {
+            attributes.put("Força", 0.0);
+            attributes.put("Destreza", 0.0);
+            attributes.put("Constituição", 0.0);
+            attributes.put("Inteligência", 0.0);
+            attributes.put("Sabedoria", 0.0);
+            attributes.put("Carisma", 0.0);
+        }
+    }
 
     public Map<String, Double> getAttributes() {
         return attributes;
