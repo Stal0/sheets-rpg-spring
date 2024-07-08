@@ -1,6 +1,6 @@
 package com.stalixo.charsheetspring.repositories.repositoriesBlocks;
 
-import com.stalixo.charsheetspring.domain.subBlocks.CharacterInfoBlock;
+import com.stalixo.charsheetspring.domain.blocks.CharacterInfoBlock;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

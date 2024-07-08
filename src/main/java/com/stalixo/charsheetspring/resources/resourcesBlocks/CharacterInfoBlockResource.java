@@ -1,8 +1,6 @@
 package com.stalixo.charsheetspring.resources.resourcesBlocks;
 
-import com.stalixo.charsheetspring.domain.subBlocks.AttributeBlock;
-import com.stalixo.charsheetspring.domain.subBlocks.CharacterInfoBlock;
-import com.stalixo.charsheetspring.services.servicesBlocks.AttributeBlockService;
+import com.stalixo.charsheetspring.domain.blocks.CharacterInfoBlock;
 import com.stalixo.charsheetspring.services.servicesBlocks.CharacterInfoBlockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

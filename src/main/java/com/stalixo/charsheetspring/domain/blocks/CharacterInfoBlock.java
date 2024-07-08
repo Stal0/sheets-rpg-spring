@@ -1,6 +1,5 @@
-package com.stalixo.charsheetspring.domain.subBlocks;
+package com.stalixo.charsheetspring.domain.blocks;
 
-import com.stalixo.charsheetspring.domain.Block;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document

@@ -1,7 +1,7 @@
 package com.stalixo.charsheetspring.domain;
 
+import com.stalixo.charsheetspring.domain.blocks.Block;
 import com.stalixo.charsheetspring.domain.enums.SheetsModels;
-import com.stalixo.charsheetspring.domain.subBlocks.CharacterInfoBlock;
 import com.stalixo.charsheetspring.dto.UserDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

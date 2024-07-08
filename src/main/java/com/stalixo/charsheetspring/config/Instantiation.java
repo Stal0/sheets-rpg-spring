@@ -3,8 +3,9 @@ package com.stalixo.charsheetspring.config;
 import com.stalixo.charsheetspring.domain.Sheet;
 import com.stalixo.charsheetspring.domain.User;
 import com.stalixo.charsheetspring.domain.enums.SheetsModels;
-import com.stalixo.charsheetspring.domain.subBlocks.AttributeBlock;
-import com.stalixo.charsheetspring.domain.subBlocks.CharacterInfoBlock;
+import com.stalixo.charsheetspring.domain.blocks.AttributeBlock;
+import com.stalixo.charsheetspring.domain.blocks.CharacterInfoBlock;
+import com.stalixo.charsheetspring.domain.factories.AttributeBlockFactory;
 import com.stalixo.charsheetspring.dto.UserDTO;
 import com.stalixo.charsheetspring.repositories.SheetRepository;
 import com.stalixo.charsheetspring.repositories.UserRepository;
@@ -48,9 +49,8 @@ public class Instantiation implements CommandLineRunner {
         CharacterInfoBlock infoBlock = new CharacterInfoBlock(null, "Bob Augusto", "Anão", 1.72);
         CharacterInfoBlock infoBlock1 = new CharacterInfoBlock(null, "Carla Maria", "Elfo", 1.52);
 
-        AttributeBlock attribute1 = new AttributeBlock(null, sheet1);
-        AttributeBlock attribute2 = new AttributeBlock(null, sheet2);
-
+        AttributeBlock attribute1 = AttributeBlockFactory.createAttributeBlock(null, sheet1.getSheetsModels());
+        AttributeBlock attribute2 = AttributeBlockFactory.createAttributeBlock(null, sheet2.getSheetsModels());
 
         sheet1.addBlock(infoBlock);
         sheet2.addBlock(infoBlock1);
