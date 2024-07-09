@@ -22,13 +22,14 @@ public class AttributeBlockService {
 
     public AttributeBlock findById(String id) {
         Optional<AttributeBlock> obj = repo.findById(id);
-        obj.orElseThrow();
+        obj.orElseThrow(() -> new IllegalArgumentException("Object not found!"));
         return obj.get();
     }
 
     public void setAttributeById(String id, AttributeDTO attributeDTO) {
         Optional<AttributeBlock> obj = repo.findById(id);
-        obj.orElseThrow();
+        AttributeBlock block = obj.orElseThrow(() -> new IllegalArgumentException("Object not found!"));
         obj.get().setAttribute(attributeDTO.getField(), attributeDTO.getValue());
+        repo.save(block);
     }
 }

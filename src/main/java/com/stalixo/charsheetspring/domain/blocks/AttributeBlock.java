@@ -12,6 +12,8 @@ public class AttributeBlock extends Block {
 
     private Map<String, Double> attributes = new HashMap<String, Double>();
 
+    public AttributeBlock() {
+    }
 
     public AttributeBlock(String id, Map<String, Double> attributes) {
         super(id);
@@ -22,6 +24,10 @@ public class AttributeBlock extends Block {
         return attributes;
     }
 
+    public void setAttributes(Map<String, Double> attributes) {
+        this.attributes = attributes;
+    }
+
     public void setAttribute(String obj, Double value) {
 
         if (obj == null || obj.trim().isEmpty()) {
@@ -30,7 +36,6 @@ public class AttributeBlock extends Block {
         if (value == null) {
             throw new IllegalArgumentException("Attribute value cannot be null");
         }
-        System.out.println(obj + " " + value);
         attributes.put(obj, value);
     }
 
@@ -40,4 +45,5 @@ public class AttributeBlock extends Block {
         }
         attributes.remove(obj);
     }
+
 }

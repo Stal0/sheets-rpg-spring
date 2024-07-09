@@ -57,6 +57,9 @@ public class Instantiation implements CommandLineRunner {
         sheet1.addBlock(attribute1);
         sheet2.addBlock(attribute2);
 
+       // user1.getSheets().add(sheet1);
+       // user2.getSheets().add(sheet2);
+
         attributeBlockRepository.saveAll(Arrays.asList(attribute1, attribute2));
 
         userRepository.saveAll(Arrays.asList(user1, user2));

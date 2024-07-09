@@ -28,6 +28,14 @@ public abstract class Block implements Serializable {
         this.id = id;
     }
 
+    public Sheet getSheet() {
+        return sheet;
+    }
+
+    public void setSheet(Sheet sheet) {
+        this.sheet = sheet;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

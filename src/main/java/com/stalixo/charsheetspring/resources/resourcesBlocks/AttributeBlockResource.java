@@ -31,8 +31,6 @@ public class AttributeBlockResource {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Void> setAttributeById(@RequestBody AttributeDTO attributeDTO, @PathVariable String id) {
         service.setAttributeById(id, attributeDTO);
-        System.out.println(attributeDTO.getField());
-        System.out.println(attributeDTO.getValue());
         return ResponseEntity.noContent().build();
     }
 }
