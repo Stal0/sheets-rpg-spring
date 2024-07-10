@@ -40,8 +40,8 @@ public class Instantiation implements CommandLineRunner {
         userRepository.deleteAll();
         attributeBlockRepository.deleteAll();
 
-        User user1 = new User(null, "Lucas G", "12345678", "lucasg@gmail.com");
-        User user2 = new User(null, "Edvaldo", "12345678", "edvaldo@gmail.com");
+        User user1 = new User(null, "Lucas G", "lucasg@gmail.com");
+        User user2 = new User(null, "Edvaldo", "edvaldo@gmail.com");
 
         Sheet sheet1 = new Sheet(null, "Bob, o Anão", new UserDTO(user1), SheetsModels.DND);
         Sheet sheet2 = new Sheet(null, "Carla, a Clériga", new UserDTO(user2), SheetsModels.OTHER);

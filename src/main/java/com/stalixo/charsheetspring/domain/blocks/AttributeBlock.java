@@ -1,14 +1,9 @@
 package com.stalixo.charsheetspring.domain.blocks;
 
-import com.stalixo.charsheetspring.domain.Sheet;
-import com.stalixo.charsheetspring.domain.enums.SheetsModels;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.util.HashMap;
 import java.util.Map;
 
-@Document
-public class AttributeBlock extends Block {
+public abstract class AttributeBlock extends Block {
 
     private Map<String, Double> attributes = new HashMap<String, Double>();
 

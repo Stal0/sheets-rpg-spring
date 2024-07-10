@@ -2,6 +2,7 @@ package com.stalixo.charsheetspring.services;
 
 import com.stalixo.charsheetspring.domain.Sheet;
 import com.stalixo.charsheetspring.domain.User;
+import com.stalixo.charsheetspring.dto.UserDTO;
 import com.stalixo.charsheetspring.repositories.SheetRepository;
 import com.stalixo.charsheetspring.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,15 @@ public class UserService {
     public User update(User obj) {
         Optional<User> newObj = repo.findById(obj.getId());
         updateData(newObj.get(), obj);
+        return repo.save(newObj.get());
+    }
+
+    public User fromDTO(UserDTO objDTO) {
+        return new User(objDTO.getId(), objDTO.getUsername(), objDTO.getEmail());
+    }
+
+    private void updateData(User user, User obj) {
+        user.setUsername(obj.getUsername());
+        user.setEmail(obj.getEmail());
     }
 }
