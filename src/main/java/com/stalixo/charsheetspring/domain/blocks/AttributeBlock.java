@@ -5,14 +5,13 @@ import java.util.Map;
 
 public abstract class AttributeBlock extends Block {
 
-    private Map<String, Double> attributes = new HashMap<String, Double>();
+    protected Map<String, Double> attributes = new HashMap<String, Double>();
 
     public AttributeBlock() {
     }
 
-    public AttributeBlock(String id, Map<String, Double> attributes) {
+    public AttributeBlock(String id) {
         super(id);
-        this.attributes = attributes;
     }
 
     public Map<String, Double> getAttributes() {

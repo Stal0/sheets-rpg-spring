@@ -5,7 +5,7 @@ import com.stalixo.charsheetspring.domain.User;
 import com.stalixo.charsheetspring.domain.enums.SheetsModels;
 import com.stalixo.charsheetspring.domain.blocks.AttributeBlock;
 import com.stalixo.charsheetspring.domain.blocks.CharacterInfoBlock;
-import com.stalixo.charsheetspring.domain.factories.AttributeBlockFactory;
+import com.stalixo.charsheetspring.domain.factories.AttributeFactory;
 import com.stalixo.charsheetspring.dto.UserDTO;
 import com.stalixo.charsheetspring.repositories.SheetRepository;
 import com.stalixo.charsheetspring.repositories.UserRepository;
@@ -43,22 +43,23 @@ public class Instantiation implements CommandLineRunner {
         User user1 = new User(null, "Lucas G", "lucasg@gmail.com");
         User user2 = new User(null, "Edvaldo", "edvaldo@gmail.com");
 
-        Sheet sheet1 = new Sheet(null, "Bob, o Anão", new UserDTO(user1), SheetsModels.DND);
-        Sheet sheet2 = new Sheet(null, "Carla, a Clériga", new UserDTO(user2), SheetsModels.OTHER);
+        Sheet sheet1 = new Sheet(null, "Bob, o Anão", new UserDTO(user1), SheetsModels.fromValue("DND"));
+        Sheet sheet2 = new Sheet(null, "Carla, a Clériga", new UserDTO(user2), SheetsModels.fromValue("OTHER"));
+
+        System.out.println(sheet1.getSheetsModels().name());
 
         CharacterInfoBlock infoBlock = new CharacterInfoBlock(null, "Bob Augusto", "Anão", 1.72);
         CharacterInfoBlock infoBlock1 = new CharacterInfoBlock(null, "Carla Maria", "Elfo", 1.52);
 
-        AttributeBlock attribute1 = AttributeBlockFactory.createAttributeBlock(null, sheet1.getSheetsModels());
-        AttributeBlock attribute2 = AttributeBlockFactory.createAttributeBlock(null, sheet2.getSheetsModels());
+
+        AttributeBlock attribute1 = AttributeFactory.createBlock(sheet1.getId(), sheet1.getSheetsModels());
+        AttributeBlock attribute2 = AttributeFactory.createBlock(sheet2.getId(), sheet2.getSheetsModels());
 
         sheet1.addBlock(infoBlock);
         sheet2.addBlock(infoBlock1);
         sheet1.addBlock(attribute1);
         sheet2.addBlock(attribute2);
 
-       // user1.getSheets().add(sheet1);
-       // user2.getSheets().add(sheet2);
 
         attributeBlockRepository.saveAll(Arrays.asList(attribute1, attribute2));
 
