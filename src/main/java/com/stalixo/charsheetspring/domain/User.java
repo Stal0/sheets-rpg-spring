@@ -16,7 +16,7 @@ public class User implements Serializable {
     @Id
     private String id;
     private String username;
-   // private String password;
+    private String password;
     private String email;
 
     @DBRef(lazy = true)
@@ -25,10 +25,11 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String id, String username, String email) {
+    public User(String id, String username, String email, String password) {
         this.id = id;
         this.username = username;
         this.email = email;
+        this.password = password;
     }
 
     public String getId() {
@@ -47,13 +48,20 @@ public class User implements Serializable {
         this.username = username;
     }
 
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<Sheet> getSheets() {

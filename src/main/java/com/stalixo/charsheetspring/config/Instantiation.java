@@ -6,7 +6,7 @@ import com.stalixo.charsheetspring.domain.enums.SheetsModels;
 import com.stalixo.charsheetspring.domain.blocks.AttributeBlock;
 import com.stalixo.charsheetspring.domain.blocks.CharacterInfoBlock;
 import com.stalixo.charsheetspring.domain.factories.AttributeFactory;
-import com.stalixo.charsheetspring.dto.UserDTO;
+import com.stalixo.charsheetspring.dto.request.UserRequestDTO;
 import com.stalixo.charsheetspring.repositories.SheetRepository;
 import com.stalixo.charsheetspring.repositories.UserRepository;
 import com.stalixo.charsheetspring.repositories.repositoriesBlocks.AttributeBlockRepository;
@@ -43,8 +43,8 @@ public class Instantiation implements CommandLineRunner {
         User user1 = new User(null, "Lucas G", "lucasg@gmail.com");
         User user2 = new User(null, "Edvaldo", "edvaldo@gmail.com");
 
-        Sheet sheet1 = new Sheet(null, "Bob, o Anão", new UserDTO(user1), SheetsModels.fromValue("DND"));
-        Sheet sheet2 = new Sheet(null, "Carla, a Clériga", new UserDTO(user2), SheetsModels.fromValue("OTHER"));
+        Sheet sheet1 = new Sheet(null, "Bob, o Anão", new UserRequestDTO(user1), SheetsModels.fromValue("DND"));
+        Sheet sheet2 = new Sheet(null, "Carla, a Clériga", new UserRequestDTO(user2), SheetsModels.fromValue("OTHER"));
 
         System.out.println(sheet1.getSheetsModels().name());
 

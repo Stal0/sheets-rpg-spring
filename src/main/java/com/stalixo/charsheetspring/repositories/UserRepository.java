@@ -1,6 +1,5 @@
 package com.stalixo.charsheetspring.repositories;
 
-import com.stalixo.charsheetspring.domain.Sheet;
 import com.stalixo.charsheetspring.domain.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

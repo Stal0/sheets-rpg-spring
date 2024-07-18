@@ -2,7 +2,7 @@ package com.stalixo.charsheetspring.domain;
 
 import com.stalixo.charsheetspring.domain.blocks.Block;
 import com.stalixo.charsheetspring.domain.enums.SheetsModels;
-import com.stalixo.charsheetspring.dto.UserDTO;
+import com.stalixo.charsheetspring.dto.request.UserRequestDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,14 +20,14 @@ public class Sheet implements Serializable {
     protected String name;
     protected SheetsModels sheetsModels;
 
-    protected UserDTO userDTO;
+    protected UserRequestDTO userDTO;
 
     private List<Block> blocks = new ArrayList<>();
 
     public Sheet() {
     }
 
-    public Sheet(String id, String name, UserDTO userDTO, SheetsModels model) {
+    public Sheet(String id, String name, UserRequestDTO userDTO, SheetsModels model) {
         this.id = id;
         this.name = name;
         this.userDTO = userDTO;
@@ -66,11 +66,11 @@ public class Sheet implements Serializable {
         this.sheetsModels = sheetsModels;
     }
 
-    public UserDTO getUserDTO() {
+    public UserRequestDTO getUserDTO() {
         return userDTO;
     }
 
-    public void setUserDTO(UserDTO userDTO) {
+    public void setUserDTO(UserRequestDTO userDTO) {
         this.userDTO = userDTO;
     }
 
