@@ -7,6 +7,7 @@ import com.stalixo.charsheetspring.domain.blocks.AttributeBlock;
 import com.stalixo.charsheetspring.domain.blocks.CharacterInfoBlock;
 import com.stalixo.charsheetspring.domain.factories.AttributeFactory;
 import com.stalixo.charsheetspring.dto.request.UserRequestDTO;
+import com.stalixo.charsheetspring.dto.response.UserResponseDTO;
 import com.stalixo.charsheetspring.repositories.SheetRepository;
 import com.stalixo.charsheetspring.repositories.UserRepository;
 import com.stalixo.charsheetspring.repositories.repositoriesBlocks.AttributeBlockRepository;
@@ -40,13 +41,20 @@ public class Instantiation implements CommandLineRunner {
         userRepository.deleteAll();
         attributeBlockRepository.deleteAll();
 
-        User user1 = new User(null, "Lucas G", "lucasg@gmail.com");
-        User user2 = new User(null, "Edvaldo", "edvaldo@gmail.com");
+        User user1 = new User(null, "Lucas G", "lucasg@gmail.com", "12345");
+        User user2 = new User(null, "Edvaldo", "edvaldo@gmail.com", "123456789");
 
-        Sheet sheet1 = new Sheet(null, "Bob, o Anão", new UserRequestDTO(user1), SheetsModels.fromValue("DND"));
-        Sheet sheet2 = new Sheet(null, "Carla, a Clériga", new UserRequestDTO(user2), SheetsModels.fromValue("OTHER"));
+        Sheet sheet1 = new Sheet(null, "Bob, o Anão", new UserResponseDTO(user1), SheetsModels.fromValue("DND"));
+        Sheet sheet2 = new Sheet(null, "Carla, a Clériga", new UserResponseDTO(user2), SheetsModels.fromValue("OTHER"));
 
-        System.out.println(sheet1.getSheetsModels().name());
+        userRepository.saveAll(Arrays.asList(user1, user2));
+
+        sheetRepository.saveAll(Arrays.asList(sheet1, sheet2));
+
+        user1.addSheets(sheet1);
+        user2.addSheets(sheet2);
+
+        userRepository.saveAll(Arrays.asList(user1, user2));
 
         CharacterInfoBlock infoBlock = new CharacterInfoBlock(null, "Bob Augusto", "Anão", 1.72);
         CharacterInfoBlock infoBlock1 = new CharacterInfoBlock(null, "Carla Maria", "Elfo", 1.52);
@@ -60,12 +68,9 @@ public class Instantiation implements CommandLineRunner {
         sheet1.addBlock(attribute1);
         sheet2.addBlock(attribute2);
 
+        sheetRepository.saveAll(Arrays.asList(sheet1, sheet2));
 
         attributeBlockRepository.saveAll(Arrays.asList(attribute1, attribute2));
-
-        userRepository.saveAll(Arrays.asList(user1, user2));
-
-        sheetRepository.saveAll(Arrays.asList(sheet1, sheet2));
 
         infoBlockRepository.saveAll(Arrays.asList(infoBlock, infoBlock1));
     }

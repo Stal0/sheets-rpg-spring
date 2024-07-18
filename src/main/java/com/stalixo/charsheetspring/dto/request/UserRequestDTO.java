@@ -9,13 +9,15 @@ public class UserRequestDTO implements Serializable {
 
     private String username;
     private String email;
+    private String password;
 
     public UserRequestDTO() {
     }
 
-    public UserRequestDTO(User obj) {
-        this.username = obj.getUsername();
-        this.email = obj.getEmail();
+    public UserRequestDTO(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
     }
 
     public String getUsername() {
@@ -34,4 +36,11 @@ public class UserRequestDTO implements Serializable {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

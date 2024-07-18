@@ -72,6 +72,10 @@ public class User implements Serializable {
         this.sheets = sheets;
     }
 
+    public void addSheets(Sheet sheet) {
+        sheets.add(sheet);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

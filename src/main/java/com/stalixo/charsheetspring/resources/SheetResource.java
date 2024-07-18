@@ -34,7 +34,7 @@ public class SheetResource {
         return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Void> update(@PathVariable String id, @RequestBody String )
+  //  @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+  //  public ResponseEntity<Void> update(@PathVariable String id, @RequestBody String )
 
 }
