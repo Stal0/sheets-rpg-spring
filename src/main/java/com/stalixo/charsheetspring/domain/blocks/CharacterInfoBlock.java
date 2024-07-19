@@ -1,43 +1,42 @@
 package com.stalixo.charsheetspring.domain.blocks;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.stalixo.charsheetspring.domain.Sheet;
 
-@Document
-public class CharacterInfoBlock extends Block {
+import java.util.HashMap;
+import java.util.Map;
 
-    private String nameCharacter;
-    private String race;
-    private Double heigth;
+public abstract class CharacterInfoBlock extends Block {
 
-    public CharacterInfoBlock(String id, String nameCharacter, String race, Double heigth) {
-        super(id);
-        this.nameCharacter = nameCharacter;
-        this.race = race;
-        this.heigth = heigth;
+    Map<String, String> informations = new HashMap<>();
+
+    public CharacterInfoBlock(String id, Sheet sheet) {
+        super(sheet, id);
     }
 
-    public String getNameCharacter() {
-        return nameCharacter;
+    public Map<String, String> getInformations() {
+        return informations;
     }
 
-    public void setNameCharacter(String nameCharacter) {
-        this.nameCharacter = nameCharacter;
+    public void setInformations(Map<String, String> informations) {
+        this.informations = informations;
     }
 
-    public String getRace() {
-        return race;
+    public void setInformation(String obj, String value) {
+
+        if (obj == null || obj.trim().isEmpty()) {
+            throw new IllegalArgumentException("field cannot be null or empty");
+        }
+        if (value == null) {
+            throw new IllegalArgumentException("field value cannot be null");
+        }
+        informations.put(obj, value);
     }
 
-    public void setGender(String gender) {
-        this.race = race;
-    }
-
-    public Double getHeigth() {
-        return heigth;
-    }
-
-    public void setHeigth(Double heigth) {
-        this.heigth = heigth;
+    public void removeInformation(String obj) {
+        if (obj == null || obj.trim().isEmpty()) {
+            throw new IllegalArgumentException("field cannot be null or empty");
+        }
+        informations.remove(obj);
     }
 
 }

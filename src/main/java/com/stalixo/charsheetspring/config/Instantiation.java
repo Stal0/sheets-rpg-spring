@@ -6,7 +6,8 @@ import com.stalixo.charsheetspring.domain.enums.SheetsModels;
 import com.stalixo.charsheetspring.domain.blocks.AttributeBlock;
 import com.stalixo.charsheetspring.domain.blocks.CharacterInfoBlock;
 import com.stalixo.charsheetspring.domain.factories.AttributeFactory;
-import com.stalixo.charsheetspring.dto.request.UserRequestDTO;
+import com.stalixo.charsheetspring.domain.factories.CharacterInfoFactory;
+import com.stalixo.charsheetspring.domain.implementations.characterInfo.CharacterInfoDND;
 import com.stalixo.charsheetspring.dto.response.UserResponseDTO;
 import com.stalixo.charsheetspring.repositories.SheetRepository;
 import com.stalixo.charsheetspring.repositories.UserRepository;
@@ -56,15 +57,16 @@ public class Instantiation implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(user1, user2));
 
-        CharacterInfoBlock infoBlock = new CharacterInfoBlock(null, "Bob Augusto", "Anão", 1.72);
-        CharacterInfoBlock infoBlock1 = new CharacterInfoBlock(null, "Carla Maria", "Elfo", 1.52);
+        CharacterInfoBlock infoBlock1 = CharacterInfoFactory.createBlock(sheet1.getId(), sheet1, sheet1.getSheetsModels());
+        CharacterInfoBlock infoBlock2 = new CharacterInfoDND(sheet2.getId(), sheet2, "Carla Maria", "Elfo", "Clérigo", "servente", 0, "Leal Neutro");
 
 
-        AttributeBlock attribute1 = AttributeFactory.createBlock(sheet1.getId(), sheet1.getSheetsModels());
-        AttributeBlock attribute2 = AttributeFactory.createBlock(sheet2.getId(), sheet2.getSheetsModels());
 
-        sheet1.addBlock(infoBlock);
-        sheet2.addBlock(infoBlock1);
+        AttributeBlock attribute1 = AttributeFactory.createBlock(sheet1.getId(), sheet1, sheet1.getSheetsModels());
+        AttributeBlock attribute2 = AttributeFactory.createBlock(sheet2.getId(), sheet2, sheet2.getSheetsModels());
+
+        sheet1.addBlock(infoBlock1);
+        sheet2.addBlock(infoBlock2);
         sheet1.addBlock(attribute1);
         sheet2.addBlock(attribute2);
 
@@ -72,6 +74,6 @@ public class Instantiation implements CommandLineRunner {
 
         attributeBlockRepository.saveAll(Arrays.asList(attribute1, attribute2));
 
-        infoBlockRepository.saveAll(Arrays.asList(infoBlock, infoBlock1));
+        infoBlockRepository.saveAll(Arrays.asList(infoBlock1, infoBlock1));
     }
 }

@@ -5,6 +5,7 @@ import com.stalixo.charsheetspring.domain.enums.SheetsModels;
 import com.stalixo.charsheetspring.dto.request.UserRequestDTO;
 import com.stalixo.charsheetspring.dto.response.UserResponseDTO;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -23,6 +24,7 @@ public class Sheet implements Serializable {
 
     protected UserResponseDTO userDTO;
 
+    @DBRef(lazy = true)
     private List<Block> blocks = new ArrayList<>();
 
     public Sheet() {

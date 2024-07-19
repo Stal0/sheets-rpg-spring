@@ -1,5 +1,7 @@
 package com.stalixo.charsheetspring.domain.blocks;
 
+import com.stalixo.charsheetspring.domain.Sheet;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,8 +12,8 @@ public abstract class AttributeBlock extends Block {
     public AttributeBlock() {
     }
 
-    public AttributeBlock(String id) {
-        super(id);
+    public AttributeBlock(String id, Sheet sheet) {
+        super(sheet, id);
     }
 
     public Map<String, Double> getAttributes() {

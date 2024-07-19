@@ -10,21 +10,14 @@ public abstract class Block implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    protected String id;
+    private String id;
     protected Sheet sheet;
 
     public Block() {
     }
 
-    public Block(String id) {
-        this.id = id;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
+    public Block(Sheet sheet, String id) {
+        this.sheet = sheet;
         this.id = id;
     }
 
@@ -41,11 +34,11 @@ public abstract class Block implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Block block = (Block) o;
-        return Objects.equals(id, block.id);
+        return Objects.equals(sheet, block.sheet);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hashCode(sheet);
     }
 }
