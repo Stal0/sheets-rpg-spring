@@ -7,7 +7,7 @@ import java.util.Map;
 
 public abstract class CharacterInfoBlock extends Block {
 
-    Map<String, String> informations = new HashMap<>();
+    protected Map<String, String> informations = new HashMap<>();
 
     public CharacterInfoBlock(String id, Sheet sheet) {
         super(sheet, id);
