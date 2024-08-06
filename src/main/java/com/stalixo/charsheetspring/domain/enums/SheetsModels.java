@@ -3,6 +3,7 @@ package com.stalixo.charsheetspring.domain.enums;
 public enum SheetsModels {
 
     DND("DND"),
+    TORMENTA("TORMENT"),
     OTHER("OTHER");
 
     private final String value;

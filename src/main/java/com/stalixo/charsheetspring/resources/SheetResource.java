@@ -1,12 +1,11 @@
 package com.stalixo.charsheetspring.resources;
 
-import com.stalixo.charsheetspring.domain.Sheet;
+import com.stalixo.charsheetspring.domain.sheets.Sheet;
 import com.stalixo.charsheetspring.services.SheetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

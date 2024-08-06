@@ -1,7 +1,6 @@
 package com.stalixo.charsheetspring.services;
 
-import com.stalixo.charsheetspring.domain.Sheet;
-import com.stalixo.charsheetspring.domain.User;
+import com.stalixo.charsheetspring.domain.sheets.Sheet;
 import com.stalixo.charsheetspring.repositories.SheetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
