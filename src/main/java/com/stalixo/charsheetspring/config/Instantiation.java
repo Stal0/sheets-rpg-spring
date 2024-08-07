@@ -1,9 +1,6 @@
 package com.stalixo.charsheetspring.config;
 
-import com.stalixo.charsheetspring.domain.sheets.Sheet;
 import com.stalixo.charsheetspring.domain.User;
-import com.stalixo.charsheetspring.domain.enums.SheetsModels;
-import com.stalixo.charsheetspring.dto.response.UserResponseDTO;
 import com.stalixo.charsheetspring.repositories.SheetRepository;
 import com.stalixo.charsheetspring.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

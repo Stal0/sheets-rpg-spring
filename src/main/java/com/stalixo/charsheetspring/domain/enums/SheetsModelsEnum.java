@@ -1,6 +1,6 @@
 package com.stalixo.charsheetspring.domain.enums;
 
-public enum SheetsModels {
+public enum SheetsModelsEnum {
 
     DND("DND"),
     TORMENTA("TORMENT"),
@@ -8,7 +8,7 @@ public enum SheetsModels {
 
     private final String value;
 
-    private SheetsModels (String s) {
+    private SheetsModelsEnum(String s) {
         this.value = s;
     }
 
@@ -16,8 +16,8 @@ public enum SheetsModels {
         return value;
     }
 
-    public static SheetsModels fromValue(String value) {
-        for (SheetsModels models : SheetsModels.values()) {
+    public static SheetsModelsEnum fromValue(String value) {
+        for (SheetsModelsEnum models : SheetsModelsEnum.values()) {
             if (models.value.equals(value)) {
                 return models;
             }

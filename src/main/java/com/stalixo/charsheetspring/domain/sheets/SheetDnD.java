@@ -1,36 +1,49 @@
 package com.stalixo.charsheetspring.domain.sheets;
 
-import com.stalixo.charsheetspring.domain.enums.SheetsModels;
+import com.stalixo.charsheetspring.domain.enums.AttributesDndEnum;
+import com.stalixo.charsheetspring.domain.enums.ClassesDnDEnum;
+import com.stalixo.charsheetspring.domain.enums.SkillsDnDEnum;
+import com.stalixo.charsheetspring.domain.enums.SheetsModelsEnum;
 import com.stalixo.charsheetspring.dto.response.UserResponseDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 @Document
-public class SheetDnD implements Sheet{
+public class SheetDnD implements Sheet, Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @Id
     private String id;
 
     private UserResponseDTO userDTO;
-    private SheetsModels sheetsModels;
+    private SheetsModelsEnum sheetsModels;
 
     private String name;
     private String race;
-    private String characterClass;
+    private ClassesDnDEnum characterClass;
     private Integer level;
     private String alignment;
     private String background;
     private Double experiencePoints;
 
-    private Map<String, Double> ability;
+    private Map<AttributesDndEnum, AttributesDndEnum> attributes;
+    private Map<SkillsDnDEnum, Boolean> proficiencies;
+    private Map<AttributesDndEnum, Boolean> savingThrowsProficiency;
 
+    private Integer proficiencyBonus;
 
-    public SheetDnD(UserResponseDTO userDTO, SheetsModels sheetsModels) {
-        ability = new HashMap<>();
+    public SheetDnD(UserResponseDTO userDTO, SheetsModelsEnum sheetsModels) {
+        attributes = new HashMap<>();
+        proficiencies = new HashMap<>();
+        savingThrowsProficiency = new HashMap<>();
         this.userDTO = userDTO;
         this.sheetsModels = sheetsModels;
     }
@@ -59,11 +72,11 @@ public class SheetDnD implements Sheet{
         this.userDTO = userDTO;
     }
 
-    public SheetsModels getSheetsModels() {
+    public SheetsModelsEnum getSheetsModels() {
         return sheetsModels;
     }
 
-    public void setSheetsModels(SheetsModels sheetsModels) {
+    public void setSheetsModels(SheetsModelsEnum sheetsModels) {
         this.sheetsModels = sheetsModels;
     }
 
@@ -75,11 +88,11 @@ public class SheetDnD implements Sheet{
         this.race = race;
     }
 
-    public String getCharacterClass() {
+    public ClassesDnDEnum getCharacterClass() {
         return characterClass;
     }
 
-    public void setCharacterClass(String characterClass) {
+    public void setCharacterClass(ClassesDnDEnum characterClass) {
         this.characterClass = characterClass;
     }
 
@@ -113,6 +126,38 @@ public class SheetDnD implements Sheet{
 
     public void setExperiencePoints(Double experiencePoints) {
         this.experiencePoints = experiencePoints;
+    }
+
+    public Map<AttributesDndEnum, AttributesDndEnum> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(Map<AttributesDndEnum, AttributesDndEnum> attributes) {
+        this.attributes = attributes;
+    }
+
+    public Map<SkillsDnDEnum, Boolean> getProficiencies() {
+        return proficiencies;
+    }
+
+    public void setProficiencies(Map<SkillsDnDEnum, Boolean> proficiencies) {
+        this.proficiencies = proficiencies;
+    }
+
+    public Map<AttributesDndEnum, Boolean> getSavingThrowsProficiency() {
+        return savingThrowsProficiency;
+    }
+
+    public void setSavingThrowsProficiency(Map<AttributesDndEnum, Boolean> savingThrowsProficiency) {
+        this.savingThrowsProficiency = savingThrowsProficiency;
+    }
+
+    public Integer getProficiencyBonus() {
+        return proficiencyBonus;
+    }
+
+    public void setProficiencyBonus(Integer proficiencyBonus) {
+        this.proficiencyBonus = proficiencyBonus;
     }
 
     @Override

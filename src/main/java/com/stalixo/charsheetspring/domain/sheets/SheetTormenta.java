@@ -1,6 +1,6 @@
 package com.stalixo.charsheetspring.domain.sheets;
 
-import com.stalixo.charsheetspring.domain.enums.SheetsModels;
+import com.stalixo.charsheetspring.domain.enums.SheetsModelsEnum;
 import com.stalixo.charsheetspring.dto.response.UserResponseDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,7 +16,7 @@ public class SheetTormenta implements Sheet{
     private String id;
 
     private UserResponseDTO userDTO;
-    private SheetsModels sheetsModels;
+    private SheetsModelsEnum sheetsModels;
 
     private String name;
     private String race;
@@ -31,7 +31,7 @@ public class SheetTormenta implements Sheet{
     private Map<String, Double> ability;
 
 
-    public SheetTormenta(UserResponseDTO userDTO, SheetsModels sheetsModels) {
+    public SheetTormenta(UserResponseDTO userDTO, SheetsModelsEnum sheetsModels) {
         ability = new HashMap<>();
         this.userDTO = userDTO;
         this.sheetsModels = sheetsModels;
@@ -61,11 +61,11 @@ public class SheetTormenta implements Sheet{
         this.userDTO = userDTO;
     }
 
-    public SheetsModels getSheetsModels() {
+    public SheetsModelsEnum getSheetsModels() {
         return sheetsModels;
     }
 
-    public void setSheetsModels(SheetsModels sheetsModels) {
+    public void setSheetsModels(SheetsModelsEnum sheetsModels) {
         this.sheetsModels = sheetsModels;
     }
 
