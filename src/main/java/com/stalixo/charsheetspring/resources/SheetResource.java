@@ -1,6 +1,7 @@
 package com.stalixo.charsheetspring.resources;
 
 import com.stalixo.charsheetspring.domain.sheets.Sheet;
+import com.stalixo.charsheetspring.domain.sheets.SheetDnD;
 import com.stalixo.charsheetspring.services.SheetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,14 +17,14 @@ public class SheetResource {
     private SheetService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Sheet>> findAll() {
-        List<Sheet> list = service.findAll();
+    public ResponseEntity<List<SheetDnD>> findAll() {
+        List<SheetDnD> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Sheet> findById(@PathVariable String id) {
-        Sheet obj = service.findById(id);
+    public ResponseEntity<SheetDnD> findById(@PathVariable String id) {
+        SheetDnD obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 

@@ -22,10 +22,6 @@ public class SheetDnD implements Sheet, Serializable {
 
     @Id
     private String id;
-
-    private UserResponseDTO userDTO;
-    private SheetsModelsEnum sheetsModels;
-
     private String name;
     private String race;
     private ClassesDnDEnum characterClass;
@@ -38,7 +34,22 @@ public class SheetDnD implements Sheet, Serializable {
     private Map<SkillsDnDEnum, Boolean> proficiencies;
     private Map<AttributesDndEnum, Boolean> savingThrowsProficiency;
 
+    private Integer inspiration;
     private Integer proficiencyBonus;
+    private Integer passiveWisdom;
+
+    private Integer armorClass;
+    private Integer initiative;
+    private Integer speed;
+
+    private String hitDice;
+
+    private Boolean[] successes;
+    private Boolean[] failures;
+
+
+    private UserResponseDTO userDTO;
+    private SheetsModelsEnum sheetsModels;
 
     public SheetDnD(UserResponseDTO userDTO, SheetsModelsEnum sheetsModels) {
         attributes = new HashMap<>();
