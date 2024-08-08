@@ -1,6 +1,7 @@
 package com.stalixo.charsheetspring.services;
 
 import com.stalixo.charsheetspring.domain.User;
+import com.stalixo.charsheetspring.domain.sheets.Sheet;
 import com.stalixo.charsheetspring.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,12 @@ public class UserService {
         Optional<User> newObj = repo.findById(obj.getId());
         updateData(newObj.get(), obj);
         return repo.save(newObj.get());
+    }
+
+    public void linkSheetToUser(User obj, Sheet sheet) {
+        Optional<User> newObj = repo.findById(obj.getId());
+        newObj.get().addSheets(sheet);
+        repo.save(newObj.get());
     }
 
     private void updateData(User user, User obj) {

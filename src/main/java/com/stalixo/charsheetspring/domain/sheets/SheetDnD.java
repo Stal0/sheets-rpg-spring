@@ -30,7 +30,7 @@ public class SheetDnD implements Sheet, Serializable {
     private String background;
     private Double experiencePoints;
 
-    private Map<AttributesDndEnum, AttributesDndEnum> attributes;
+    private Map<AttributesDndEnum, Double> attributes;
     private Map<SkillsDnDEnum, Boolean> proficiencies;
     private Map<AttributesDndEnum, Boolean> savingThrowsProficiency;
 
@@ -44,8 +44,8 @@ public class SheetDnD implements Sheet, Serializable {
 
     private String hitDice;
 
-    private Boolean[] successes;
-    private Boolean[] failures;
+    private Boolean[] successes = new Boolean[3];
+    private Boolean[] failures = new Boolean[3];
 
 
     private UserResponseDTO userDTO;
@@ -139,11 +139,11 @@ public class SheetDnD implements Sheet, Serializable {
         this.experiencePoints = experiencePoints;
     }
 
-    public Map<AttributesDndEnum, AttributesDndEnum> getAttributes() {
+    public Map<AttributesDndEnum, Double> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(Map<AttributesDndEnum, AttributesDndEnum> attributes) {
+    public void setAttributes(Map<AttributesDndEnum, Double> attributes) {
         this.attributes = attributes;
     }
 
