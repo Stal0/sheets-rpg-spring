@@ -10,9 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @Document
 public class SheetDnD implements Sheet, Serializable {
@@ -22,6 +20,7 @@ public class SheetDnD implements Sheet, Serializable {
 
     @Id
     private String id;
+    //Informações básicas do personagem
     private String name;
     private String race;
     private ClassesDnDEnum characterClass;
@@ -29,24 +28,31 @@ public class SheetDnD implements Sheet, Serializable {
     private String alignment;
     private String background;
     private Double experiencePoints;
-
+    //Maps dos atributos, proficiências e salva guardas, bônus de proficiência, inspiração e Sabedoria passiva.
     private Map<AttributesDndEnum, Double> attributes;
     private Map<SkillsDnDEnum, Boolean> proficiencies;
     private Map<AttributesDndEnum, Boolean> savingThrowsProficiency;
-
+    private Map<SkillsDnDEnum, Integer> proficienciesValues;
     private Integer inspiration;
     private Integer proficiencyBonus;
     private Integer passiveWisdom;
-
+    //Informações de combate, Classe de armadura, iniciativa, etc...
     private Integer armorClass;
     private Integer initiative;
-    private Integer speed;
-
+    private Double speed;
     private String hitDice;
-
     private Boolean[] successes = new Boolean[3];
     private Boolean[] failures = new Boolean[3];
-
+    //Equipamentos, talentos entre outros do personagem
+    List<String> attacksAndConjuration = new ArrayList<>();
+    List<String> proficienciesAndLanguage = new ArrayList<>();
+    List<String> equipments = new ArrayList<>();
+    List<String> featuresAndTraits = new ArrayList<>();
+    //Informações sobre o personagem, personalidade, ideiais, fraquezas, etc...
+    private String personalityTraits;
+    private String ideals;
+    private String bonds;
+    private String flaws;
 
     private UserResponseDTO userDTO;
     private SheetsModelsEnum sheetsModels;
@@ -55,8 +61,38 @@ public class SheetDnD implements Sheet, Serializable {
         attributes = new HashMap<>();
         proficiencies = new HashMap<>();
         savingThrowsProficiency = new HashMap<>();
+        proficienciesValues = new HashMap<>();
         this.userDTO = userDTO;
         this.sheetsModels = sheetsModels;
+    }
+
+    private int calculateModifier(double attributeValue) {
+        return (int) Math.floor((attributeValue - 10) / 2);
+    }
+
+    public int getSkillValue(SkillsDnDEnum skill) {
+        AttributesDndEnum associatedAttribute = skill.getAtributoAssociado();
+        double attributeValue = attributes.getOrDefault(associatedAttribute, 10.0);
+        int modifier = calculateModifier(attributeValue);
+        if (proficiencies.getOrDefault(skill, false)) {
+            modifier += proficiencyBonus;
+        }
+        return modifier;
+    }
+
+    public int getSavingThrowValue(AttributesDndEnum attribute) {
+        double attributeValue = attributes.getOrDefault(attribute, 10.0);
+        int modifier = calculateModifier(attributeValue);
+        if (savingThrowsProficiency.getOrDefault(attribute, false)) {
+            modifier += proficiencyBonus;
+        }
+        return modifier;
+    }
+
+    public void calculateProficienciesValues() {
+        for (SkillsDnDEnum skill : SkillsDnDEnum.values()) {
+            proficienciesValues.put(skill, getSkillValue(skill));
+        }
     }
 
     public String getId() {
@@ -169,6 +205,142 @@ public class SheetDnD implements Sheet, Serializable {
 
     public void setProficiencyBonus(Integer proficiencyBonus) {
         this.proficiencyBonus = proficiencyBonus;
+    }
+
+    public Map<SkillsDnDEnum, Integer> getProficienciesValues() {
+        return proficienciesValues;
+    }
+
+    public void setProficienciesValues(Map<SkillsDnDEnum, Integer> proficienciesValues) {
+        this.proficienciesValues = proficienciesValues;
+    }
+
+    public Integer getInspiration() {
+        return inspiration;
+    }
+
+    public void setInspiration(Integer inspiration) {
+        this.inspiration = inspiration;
+    }
+
+    public Integer getPassiveWisdom() {
+        return passiveWisdom;
+    }
+
+    public void setPassiveWisdom(Integer passiveWisdom) {
+        this.passiveWisdom = passiveWisdom;
+    }
+
+    public Integer getArmorClass() {
+        return armorClass;
+    }
+
+    public void setArmorClass(Integer armorClass) {
+        this.armorClass = armorClass;
+    }
+
+    public Integer getInitiative() {
+        return initiative;
+    }
+
+    public void setInitiative(Integer initiative) {
+        this.initiative = initiative;
+    }
+
+    public Double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(Double speed) {
+        this.speed = speed;
+    }
+
+    public String getHitDice() {
+        return hitDice;
+    }
+
+    public void setHitDice(String hitDice) {
+        this.hitDice = hitDice;
+    }
+
+    public Boolean[] getSuccesses() {
+        return successes;
+    }
+
+    public void setSuccesses(Boolean[] successes) {
+        this.successes = successes;
+    }
+
+    public Boolean[] getFailures() {
+        return failures;
+    }
+
+    public void setFailures(Boolean[] failures) {
+        this.failures = failures;
+    }
+
+    public List<String> getAttacksAndConjuration() {
+        return attacksAndConjuration;
+    }
+
+    public void setAttacksAndConjuration(List<String> attacksAndConjuration) {
+        this.attacksAndConjuration = attacksAndConjuration;
+    }
+
+    public List<String> getProficienciesAndLanguage() {
+        return proficienciesAndLanguage;
+    }
+
+    public void setProficienciesAndLanguage(List<String> proficienciesAndLanguage) {
+        this.proficienciesAndLanguage = proficienciesAndLanguage;
+    }
+
+    public List<String> getEquipments() {
+        return equipments;
+    }
+
+    public void setEquipments(List<String> equipments) {
+        this.equipments = equipments;
+    }
+
+    public List<String> getFeaturesAndTraits() {
+        return featuresAndTraits;
+    }
+
+    public void setFeaturesAndTraits(List<String> featuresAndTraits) {
+        this.featuresAndTraits = featuresAndTraits;
+    }
+
+    public String getPersonalityTraits() {
+        return personalityTraits;
+    }
+
+    public void setPersonalityTraits(String personalityTraits) {
+        this.personalityTraits = personalityTraits;
+    }
+
+    public String getIdeals() {
+        return ideals;
+    }
+
+    public void setIdeals(String ideals) {
+        this.ideals = ideals;
+    }
+
+    public String getBonds() {
+        return bonds;
+    }
+
+    public void setBonds(String bonds) {
+        this.bonds = bonds;
+    }
+
+    public String getFlaws() {
+        return flaws;
+    }
+
+    public void setFlaws(String flaws) {
+        this.flaws = flaws;
     }
 
     @Override
