@@ -1,4 +1,4 @@
-package com.stalixo.charsheetspring.domain.enums;
+package com.stalixo.charsheetspring.domain.enums.EnumsDnD;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

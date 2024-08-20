@@ -1,6 +1,5 @@
 package com.stalixo.charsheetspring.resources;
 
-import com.stalixo.charsheetspring.domain.enums.ClassesDnDEnum;
 import com.stalixo.charsheetspring.domain.sheets.SheetDnD;
 import com.stalixo.charsheetspring.dto.sheets.dnd.*;
 import com.stalixo.charsheetspring.services.SheetDnDService;
@@ -12,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/sheets")
-public class SheetResource {
+public class SheetDnDResource {
 
     @Autowired
     private SheetDnDService service;

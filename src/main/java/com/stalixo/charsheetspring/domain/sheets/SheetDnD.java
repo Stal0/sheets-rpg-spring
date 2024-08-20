@@ -1,8 +1,8 @@
 package com.stalixo.charsheetspring.domain.sheets;
 
-import com.stalixo.charsheetspring.domain.enums.AttributesDndEnum;
-import com.stalixo.charsheetspring.domain.enums.ClassesDnDEnum;
-import com.stalixo.charsheetspring.domain.enums.SkillsDnDEnum;
+import com.stalixo.charsheetspring.domain.enums.EnumsDnD.AttributesDndEnum;
+import com.stalixo.charsheetspring.domain.enums.EnumsDnD.ClassesDnDEnum;
+import com.stalixo.charsheetspring.domain.enums.EnumsDnD.SkillsDnDEnum;
 import com.stalixo.charsheetspring.domain.enums.SheetsModelsEnum;
 import com.stalixo.charsheetspring.dto.response.UserResponseDTO;
 import org.springframework.data.annotation.Id;

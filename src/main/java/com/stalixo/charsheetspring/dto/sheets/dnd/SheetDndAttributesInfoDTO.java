@@ -1,7 +1,7 @@
 package com.stalixo.charsheetspring.dto.sheets.dnd;
 
-import com.stalixo.charsheetspring.domain.enums.AttributesDndEnum;
-import com.stalixo.charsheetspring.domain.enums.SkillsDnDEnum;
+import com.stalixo.charsheetspring.domain.enums.EnumsDnD.AttributesDndEnum;
+import com.stalixo.charsheetspring.domain.enums.EnumsDnD.SkillsDnDEnum;
 
 import java.io.Serializable;
 import java.util.Map;

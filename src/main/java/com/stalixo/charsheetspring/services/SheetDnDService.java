@@ -1,8 +1,8 @@
 package com.stalixo.charsheetspring.services;
 
-import com.stalixo.charsheetspring.domain.enums.AttributesDndEnum;
-import com.stalixo.charsheetspring.domain.enums.ClassesDnDEnum;
-import com.stalixo.charsheetspring.domain.enums.SkillsDnDEnum;
+import com.stalixo.charsheetspring.domain.enums.EnumsDnD.AttributesDndEnum;
+import com.stalixo.charsheetspring.domain.enums.EnumsDnD.ClassesDnDEnum;
+import com.stalixo.charsheetspring.domain.enums.EnumsDnD.SkillsDnDEnum;
 import com.stalixo.charsheetspring.domain.sheets.SheetDnD;
 import com.stalixo.charsheetspring.repositories.SheetDnDRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +56,7 @@ public class SheetDnDService implements SheetService<SheetDnD> {
         existingSheet.setInspiration(inspiration);
         existingSheet.setProficiencyBonus(proficiencyBonus);
         existingSheet.setPassiveWisdom(passiveWisdom);
+        existingSheet.calculateProficienciesValues();
         return repo.save(existingSheet);
     }
 

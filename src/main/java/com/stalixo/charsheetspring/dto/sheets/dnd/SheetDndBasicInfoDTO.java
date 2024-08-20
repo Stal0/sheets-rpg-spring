@@ -1,6 +1,6 @@
 package com.stalixo.charsheetspring.dto.sheets.dnd;
 
-import com.stalixo.charsheetspring.domain.enums.ClassesDnDEnum;
+import com.stalixo.charsheetspring.domain.enums.EnumsDnD.ClassesDnDEnum;
 import com.stalixo.charsheetspring.domain.sheets.SheetDnD;
 
 import java.io.Serializable;

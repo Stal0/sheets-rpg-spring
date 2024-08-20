@@ -1,13 +1,12 @@
 package com.stalixo.charsheetspring.config;
 
 import com.stalixo.charsheetspring.domain.User;
-import com.stalixo.charsheetspring.domain.enums.AttributesDndEnum;
-import com.stalixo.charsheetspring.domain.enums.ClassesDnDEnum;
+import com.stalixo.charsheetspring.domain.enums.EnumsDnD.AttributesDndEnum;
+import com.stalixo.charsheetspring.domain.enums.EnumsDnD.ClassesDnDEnum;
 import com.stalixo.charsheetspring.domain.enums.SheetsModelsEnum;
-import com.stalixo.charsheetspring.domain.enums.SkillsDnDEnum;
+import com.stalixo.charsheetspring.domain.enums.EnumsDnD.SkillsDnDEnum;
 import com.stalixo.charsheetspring.domain.factories.SheetFactory;
 import com.stalixo.charsheetspring.domain.factories.SheetFactoryDnD;
-import com.stalixo.charsheetspring.domain.sheets.Sheet;
 import com.stalixo.charsheetspring.domain.sheets.SheetDnD;
 import com.stalixo.charsheetspring.dto.response.UserResponseDTO;
 import com.stalixo.charsheetspring.repositories.SheetDnDRepository;

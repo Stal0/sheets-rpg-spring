@@ -1,4 +1,4 @@
-package com.stalixo.charsheetspring.domain.enums;
+package com.stalixo.charsheetspring.domain.enums.EnumsDnD;
 
 public enum SkillsDnDEnum {
 
